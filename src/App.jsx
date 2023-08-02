@@ -23,6 +23,11 @@ function App() {
       const winner = calculateWinner(newBoard);
       // Actualizamos el estado 'winner' con el símbolo del ganador o null si no hay ganador
       setWinner(winner);
+
+      if (winner) {
+        setShowBoard(false);
+      }
+
     }
   };
 
@@ -61,6 +66,7 @@ function App() {
     setXIsNext(true);
     // Reiniciar el estado del ganador a null (no hay ganador)
     setWinner(null);
+
   };
   
 
@@ -72,7 +78,7 @@ function App() {
     ) : (
       <p className="text-2xl font-bold mb-20 animate-fade">Play: {xIsNext ? 'X' : 'O'}</p>
     )}
-        <div className="grid grid-cols-3 grid-rows-3">
+        <div className="grid grid-cols-3 grid-rows-3 ${showBoard ? '' : 'hidden'}">
           {board.map((cell,index)=>(
             <div 
             key={index}
