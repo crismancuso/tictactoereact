@@ -7,6 +7,10 @@ function App() {
   const [winner, setWinner] = useState(null);
 
   const handleClick = (index) => {
+
+    if (winner) {
+      return; // Si ya hay un ganador, salimos de la función
+    }
     // Verificamos si la casilla en el índice 'index' está vacía ("")
     if (board[index] === "") {
       // Si la casilla está vacía, creamos una copia del tablero actual usando el operador spread (...)
